@@ -1,21 +1,15 @@
 package pokemon;
 
-
-
 public class muniemon {
-	 String nombre;
-	 int vida;
-	 int ataque;
-	 int defensa;
+	String nombre;
+	int vida;
+	int ataque;
+	int defensa;
 	Tipo tipo;
-
-
 
 	public muniemon() {
 		super();
 	}
-
-
 
 	public muniemon(String nombre, int vida, int ataque, int defensa, Tipo tipo) {
 		super();
@@ -25,44 +19,47 @@ public class muniemon {
 		this.defensa = defensa;
 		this.tipo = tipo;
 	}
-	
-	public void atacarMuniemon (muniemon objetivo) {
-		
-		if (this.vida <= 0) {
-            System.out.println(this.nombre + " está muerto y no puede atacar.");
-            return;
-        }
 
-        if (objetivo.vida <= 0) {
-            System.out.println(objetivo.nombre + " está muerto y no puede ser atacado.");
-            return;
-        }
+	public void atacarMuniemon(muniemon objetivo) {
+		  if (this.vida <= 0) {
+	            System.out.println(this.nombre + " está muerto y no puede atacar.");
+	            return;
+	        }
 
-        System.out.println(this.nombre + " ataca a " + objetivo.nombre + ".");
-        
-        int danoRealizado = ( this.ataque - objetivo.defensa);
-        objetivo.defensa-= danoRealizado;
-        
-        
-		
+		  	else if (objetivo.vida <= 0) {
+	            System.out.println(objetivo.nombre + " está muerto y no puede ser atacado.");
+	            return;
+	        }
 
-        System.out.println("Se realizó un daño de " + danoRealizado + " puntos de defensa.");
-        
-      
-        
-        if (objetivo.vida <= 0) {
-            System.out.println(objetivo.nombre + " ha sido derrotado.");
-        }
-        }
-        
-        
-        
+	        else if (this.vida > 0) {
+	            int ataqueRealizado = this.ataque - objetivo.defensa;
+	            if (ataqueRealizado <objetivo.defensa) {
+	            	ataqueRealizado=this.ataque;
+	            } 
+				
 			
+            objetivo.defensa -= ataqueRealizado;
+            System.out.println(this.nombre + " ataca a " + objetivo.nombre + " y le resta " + ataqueRealizado + " puntos de vida.");
+       
+            if (objetivo.defensa<=0) { int ataquefinal= this.ataque-objetivo.vida;
+            if (ataquefinal<objetivo.vida) {
+				ataquefinal=this.ataque;
+			}
+            objetivo.vida-=ataquefinal;
+            
+            if (objetivo.vida<=0) {System.out.println("tu muniemon ha muerto");
+				
+			}
+			
+			
+         
 		}
+    }
+		   
+      
+    }
 		
+	}
 	
-	
-	
-
 
 
